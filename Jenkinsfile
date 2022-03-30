@@ -1,18 +1,18 @@
 pipeline{
     agent any
     stages{
-        stage('Build Terraform'){
-            steps{
-                sh 'terraform init -reconfigure'
-                echo 'Done Build'
-            }
-        }
         stage('AZ login'){
             steps{
                 withCredentials([string(credentialsId: 'jenkins-azure-p', variable: 'jenkins-azure-p')]) {
                     sh 'az login -u w.batista@globant.com -p ${jenkins-azure-p}'
                 }
                 echo 'AZ login'
+            }
+        }
+        stage('Build Terraform'){
+            steps{
+                sh 'terraform init -reconfigure'
+                echo 'Done Build'
             }
         }
         stage('Test terraform'){
