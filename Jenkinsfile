@@ -1,8 +1,8 @@
 pipeline{
     agent any
     environment {
-        SECRET_EMAIL     = credentials('secret_email')
-        SECRET_PASSWORD     = credentials('secret_password')
+       SECRET_EMAIL     = credentials('jenkins-azure-e')
+       SECRET_PASSWORD     = credentials('jenkins-azure-p')
     }
     stages{
         stage('Build Terraform'){
