@@ -7,6 +7,12 @@ pipeline{
                 echo 'Done Build'
             }
         }
+        stage('Az login'){
+            steps{
+                sh 'az login'
+                echo 'AZ login'
+            }
+        }
         stage('Test terraform'){
             steps{
                 sh 'terraform plan'
