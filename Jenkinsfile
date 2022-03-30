@@ -9,7 +9,7 @@ pipeline{
         }
         stage('AZ login'){
             steps{
-                withCredentials([string(credentialsId: 'my-secret', variable: 'jenkins-azure-p')]) {
+                withCredentials([string(credentialsId: 'jenkins-azure-p', variable: 'jenkins-azure-p')]) {
                     sh 'az login -u w.batista@globant.com -p ${jenkins-azure-p}'
                 }
                 echo 'AZ login'
