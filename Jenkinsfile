@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        PROJECT     = credentials('project')
+    }
     stages{
         stage('Build Terraform'){
             steps{
@@ -9,7 +12,7 @@ pipeline{
         }
         stage('Az login'){
             steps{
-                sh 'az login'
+                sh 'az login -u w.batista@globant.com -p $PROJECT'
                 echo 'AZ login'
             }
         }
