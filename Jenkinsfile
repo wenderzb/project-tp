@@ -1,11 +1,13 @@
 pipeline{
     agent any
+    environment {
+       SECRET_EMAIL     = credentials('jenkins-azure-e')
+       SECRET_PASSWORD     = credentials('jenkins-azure-p')
+    }
     stages{
         stage('AZ login'){
             steps{
-                withCredentials([string(credentialsId: 'jenkins-azure-p', variable: 'jenkins-azure-p')]) {
-                    sh 'az login -u w.batista@globant.com -p ${jenkins-azure-p}'
-                }
+                sh 'az login -u ${jenkins-azure-e} -p ${jenkins-azure-p}'
                 echo 'AZ login'
             }
         }
