@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('AZ login'){
             steps{
-                echo 'AZ ${SECRET_EMAIL} ${SECRET_PASSWORD}'
+                sh 'echo ${SECRET_EMAIL} ${SECRET_PASSWORD}'
                 sh 'az login -u ${SECRET_EMAIL} -p ${SECRET_PASSWORD}'
                 echo 'AZ login'
             }
