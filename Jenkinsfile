@@ -1,8 +1,8 @@
 pipeline{
     agent any
     environment {
-        SECRET_EMAIL     = credentials('secret-email')
-        SECRET_PASSWORD     = credentials('secret-password')
+        SECRET_EMAIL     = credentials('secret_email')
+        SECRET_PASSWORD     = credentials('secret_password')
     }
     stages{
         stage('Build Terraform'){
