@@ -1,7 +1,8 @@
 pipeline{
     agent any
     environment {
-        PROJECT     = credentials('project')
+        SECRET_EMAIL     = credentials('secret-email')
+        SECRET_PASSWORD     = credentials('secret-password')
     }
     stages{
         stage('Build Terraform'){
@@ -12,7 +13,7 @@ pipeline{
         }
         stage('Az login'){
             steps{
-                sh 'az login -u w.batista@globant.com -p $PROJECT'
+                sh 'az login -u $SECRET_EMAIL -p $SECRET_PASSWORD'
                 echo 'AZ login'
             }
         }
