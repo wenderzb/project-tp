@@ -7,7 +7,8 @@ pipeline{
     stages{
         stage('AZ login'){
             steps{
-                sh 'az login -u ${jenkins-azure-e} -p ${jenkins-azure-p}'
+                echo 'AZ ${SECRET_EMAIL} ${SECRET_PASSWORD}'
+                sh 'az login -u ${SECRET_EMAIL} -p ${SECRET_PASSWORD}'
                 echo 'AZ login'
             }
         }
