@@ -1,9 +1,5 @@
 pipeline{
     agent any
-    environment {
-       SECRET_EMAIL     = credentials('jenkins-azure-e')
-       SECRET_PASSWORD     = credentials('jenkins-azure-p')
-    }
     stages{
         stage('Build Terraform'){
             steps{
@@ -11,9 +7,11 @@ pipeline{
                 echo 'Done Build'
             }
         }
-        stage('Az login'){
+        stage('AZ login'){
             steps{
-                sh 'az login -u ${SECRET_EMAIL} -p ${SECRET_PASSWORD}'
+                withCredentials([string(credentialsId: 'my-secret', variable: 'jenkins-azure-p')]) {
+                    sh 'az login -u w.batista@globant.com -p ${jenkins-azure-p}'
+                }
                 echo 'AZ login'
             }
         }
